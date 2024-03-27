@@ -1,0 +1,21 @@
+resources:
+  jobs:
+    Tests_Monthly_SEND_Data:
+      name: Tests - Monthly SEND Data JIF Test-deploy
+      email_notifications:
+        on_failure:
+          - GRP-ProductInsights@sitecore.net
+        no_alert_for_skipped_runs: true
+      notification_settings:
+        no_alert_for_skipped_runs: true
+        no_alert_for_canceled_runs: true
+      schedule:
+        quartz_cron_expression: 7 4 20 15 * ?
+        timezone_id: Asia/Kuala_Lumpur
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: Tests_Monthly_SEND_Data
+          notebook_task:
+            notebook_path: /Shared/Tests/SEND/Test Monthly SEND Data Availability
+            source: WORKSPACE
+          existing_cluster_id: 0705-025055-iuewvi4o
