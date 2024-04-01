@@ -1,0 +1,15 @@
+# The main job for databricks_kickstars_dabs.
+resources:
+  jobs:
+    JIF_YAML_DABs:
+      name: JIF YAML DABs deploy1
+      schedule:
+        quartz_cron_expression: 57 50 10 * * ?
+        timezone_id: UTC
+        pause_status: UNPAUSED
+      tasks:
+        - task_key: Run_cal
+          notebook_task:
+            notebook_path: /Users/jif@sitecore.net/Create Calendar dimension
+            source: WORKSPACE
+          existing_cluster_id: 0401-020920-btapm015
